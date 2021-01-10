@@ -18,5 +18,15 @@ module MsCodingChallenge
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.before_configuration do
+      env_file = Rails.root.join('config/local_env.yml')
+
+      if File.exist?(env_file)
+        YAML
+          .safe_load(File.open(env_file))
+          .each { |key, value| ENV[key.to_s] = value }
+      end
+    end
   end
 end
