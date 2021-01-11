@@ -1,10 +1,11 @@
 require "test_helper"
 
 class ContentServiceTest < ActiveSupport::TestCase
-
   setup do
-    @content_service = ContentService.new(type: 'recipe')
-    @entries = @content_service.all
+    VCR.use_cassette("get_recipes") do
+      @content_service = ContentService.new(type: 'recipe')
+      @entries = @content_service.all
+    end
   end 
 
   test "should get all entries" do
@@ -13,7 +14,9 @@ class ContentServiceTest < ActiveSupport::TestCase
 
   test "should find correct entry" do
     entry_id = @entries.first.id
-    response_id = @content_service.find(entry_id).id
-    assert_equal entry_id, response_id
+    VCR.use_cassette("get_recipe") do
+      response_id = @content_service.find(entry_id).id
+      assert_equal entry_id, response_id
+    end
   end
 end

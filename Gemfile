@@ -61,7 +61,10 @@ group :test do
   gem 'webdrivers'
 
   # Stubbing and setting expectations on HTTP requests in Ruby.
-  gem 'webmock'
+  gem 'webmock', '~> 3.11.0'
+
+  # Record test suite's HTTP interactions and replay them during future test runs.
+  gem 'vcr', '~> 6.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
