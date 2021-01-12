@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class="heading">
+  <h1>Recipes</h1>
+</div>
+
+<div class="centered">
+  <section class="cards">
+    <% @recipes.each do |recipe| %>
+      <article class="card">
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= image_tag(photo_url(recipe), :alt => "recipe's photo") %>
+          <h4><%= recipe.title.truncate(70) %></h4>
+        <% end %>
+      </article>
+    <% end %>
+  </section>
+</div>
