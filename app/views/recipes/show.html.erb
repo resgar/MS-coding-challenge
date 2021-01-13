@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<section>
+  <article>
+    <header class="heading">
+      <h1><%= title(@recipe) %></h1>
+      <% if chef_name(@recipe) %>
+        <div class="byline">
+          <address class="author">By <strong><%= chef_name(@recipe) %></strong></address> 
+        </div>
+      <% end %>
+      
+      <% if tags(@recipe) %>
+        <div class="tags">
+          <% tags(@recipe).map do |tag| %>
+            <span class="tag"> <%= tag_name(tag) %> </span>
+          <% end %>
+        </div>
+      <% end %>
+    </header>
+    <div class="paper">
+      <%= image_tag photo_url(@recipe), alt: "recipe's photo", class: 'paper__image' %>
+      <div class="paper__text">
+        <p><%= description(@recipe) %></p>
+      </div>
+    </div>
+  </article>
+</section>
+<hr>
+<div class="back-button">
+  <%= link_to 'Back', recipes_path %>
+</div>

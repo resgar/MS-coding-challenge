@@ -5,4 +5,10 @@ class RecipesController < ApplicationController
     @recipes = RecipeService.all
   end
 
+  def show; end
+
+  private
+    def set_recipe
+      @recipe = RecipeService.find(params[:id])
+    end
 end

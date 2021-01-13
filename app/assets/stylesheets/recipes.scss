@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.heading {
-  padding: 0.5rem;
+.paper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, max-content));
+  padding: 20px;
+  &__image {
+    margin: auto;
+  }
+  p {
+    text-align: left;
+  }
+}
+
+.tags {
+  padding: 10px;
+}
+
+.tag {
+  margin-right: 10px
 }
