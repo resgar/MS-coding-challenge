@@ -13,12 +13,16 @@ class ContentService
 
   # Returns all entries
   def all
-    client.entries(content_type: type)
+    Rails.cache.fetch("contentful_entries", expires_in: 30.minutes) do
+      client.entries(content_type: type)
+    end
   end
 
   # Finds a specific entry
   def find(contentful_id)
-    client.entry(contentful_id)
+    Rails.cache.fetch("#{contentful_id}/contentful_entry", expires_in: 30.minutes) do
+      client.entry(contentful_id)
+    end
   end
 
   class << self
