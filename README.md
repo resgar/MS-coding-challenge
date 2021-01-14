@@ -1,24 +1,24 @@
-# README
+## Requirements
+The list of requirements to install this app are:
+* Ruby >= 3.0.x
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+* `` git clone https://github.com/resgar/Marley-Spoon-Coding-Challenge-.git``
+* `` bundle install ``
 
-Things you may want to cover:
+* Create a file named ```local_env.yml``` in ```config``` directory and add your **Space ID** and **Access Token** there:
+```
+CONTENTFUL_ACCESS_TOKEN: "Your Access Token"
+CONTENTFUL_SPACE_ID: "Your Space ID"
+```
 
-* Ruby version
+* `` bundle exec rails server ``
 
-* System dependencies
+## Running in production mode
+* `` RAILS_ENV=production rails assets:precompile ``
+* `` RAILS_ENV=production rails s ``
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Running tests
+```
+bundle exec rails test
+```
