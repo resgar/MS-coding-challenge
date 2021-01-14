@@ -1,11 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<header class="heading">
-  <h1>Recipes</h1>
-</header>
-
-<section class="cards">
-  <% @recipes.each do |recipe| %>
-    <%= render partial: 'recipe', object: recipe %>
-  <% end %>
-</section>
+<% if !@recipes %>
+  <p class="danger"><%= "Something went wrong!" %></p>
+<% else %>
+  <header class="heading">
+    <h1>Recipes</h1>
+  </header>
+  <section class="cards">
+    <% @recipes.each do |recipe| %>
+      <%= render partial: 'recipe', object: recipe %>
+    <% end %>
+  </section>
+<% end %>

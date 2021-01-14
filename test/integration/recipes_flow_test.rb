@@ -22,4 +22,25 @@ class RecipesFlowTest < ActionDispatch::IntegrationTest
       assert_select "h1", recipe.title
     end
   end
+
+  test "should see an error message when no recipe is found" do
+    recipe = @recipes.first
+    mock = Minitest::Mock.new
+    def mock.find(id); end
+
+    RecipeService.stub :new, mock do
+      get "/recipes/#{recipe.id}"
+      assert "p", "Something went wrong!"
+    end
+  end
+
+  test "should see an error message when recipes list is empty" do
+    mock = Minitest::Mock.new
+    def mock.all; end
+
+    RecipeService.stub :new, mock do
+      get "/recipes"
+      assert "p", "Something went wrong!"
+    end
+  end
 end

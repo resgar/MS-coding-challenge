@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = RecipeService.all
+    render status: :not_found unless @recipes
   end
 
   def show; end
@@ -10,5 +11,6 @@ class RecipesController < ApplicationController
   private
     def set_recipe
       @recipe = RecipeService.find(params[:id])
+      render status: :not_found unless @recipe
     end
 end

@@ -45,3 +45,9 @@ img {
 .back-button {
   padding: 20px;
 }
+
+.danger {
+  background-color: #ffdddd;
+  padding: 15px;
+  border-radius: 5px;
+}

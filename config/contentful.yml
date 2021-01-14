@@ -1,7 +1,8 @@
 shared:
   access_token: <%= ENV['CONTENTFUL_ACCESS_TOKEN'] %>
   space: <%= ENV['CONTENTFUL_SPACE_ID'] %>
-  timeout_read: 5
-  timeout_write: 5
-  timeout_connect: 5
-  raise_errors: false
+  timeout_read: 4
+  timeout_write: 4
+  timeout_connect: 4
+  max_include_resolution_depth: 1
+  max_rate_limit_wait: 10

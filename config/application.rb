@@ -33,13 +33,19 @@ module MsCodingChallenge
       end
     end
 
+    # Initialize Cotentful client
     config.after_initialize do
       contentful_config = config_for(:contentful).merge(
         logger: ActiveSupport::Logger.new("log/#{Rails.env}.log"),
         dynamic_entries: :auto
       )
-    
-      config.contentful_client = Contentful::Client.new(contentful_config)
+
+      config.contentful_client = begin
+        Contentful::Client.new(contentful_config)
+      rescue StandardError => e
+        Rails.logger.error e.inspect
+        nil
+      end
     end
 
     config.autoload_paths += %W[#{config.root}/app/services]
