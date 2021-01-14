@@ -3,7 +3,7 @@ The list of requirements to install this app are:
 * Ruby >= 3.0.x
 
 ## Installation
-* `` git clone https://github.com/resgar/Marley-Spoon-Coding-Challenge-.git``
+* `` git clone https://github.com/resgar/MS-coding-challenge.git``
 * `` bundle install ``
 
 * Create a file named ```local_env.yml``` in ```config``` directory and add your **Space ID** and **Access Token** there:
