@@ -1,6 +1,6 @@
 <article class="card">
   <%= link_to recipe_path(recipe.id) do %>
-    <%= image_tag(photo_url(recipe), alt: "recipe's photo") %>
-    <h4><%= title(recipe) %></h4>
+    <%= image_tag(recipe.photo_url, alt: "recipe's photo") %>
+    <h4><%= recipe.title %></h4>
   <% end %>
 </article>

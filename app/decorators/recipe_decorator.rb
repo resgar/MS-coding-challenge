@@ -1,8 +1,15 @@
-module RecipesHelper
+class RecipeDecorator
+  attr_accessor :recipe
+  delegate :id, to: :recipe
+
+  def initialize(recipe)
+    @recipe = recipe
+  end
+
   # Return the url of recipe image
   # @param Contentful::Entry[recipe]
   # @return String
-  def photo_url(recipe)
+  def photo_url
     recipe.fields[:photo].image_url(
       width: 300,
       height: 200,
@@ -14,36 +21,29 @@ module RecipesHelper
   # Retrives recipe's title
   # @param Contentful::Entry[recipe]
   # @return String
-  def title(recipe)
+  def title
     recipe.fields&.fetch(:title, 'No title')&.truncate(70)
   end
 
   # Retrives chef name
   # @param Contentful::Entry[recipe]
   # @return String
-  def chef_name(recipe)
+  def chef_name
     recipe.fields&.[](:chef).try(:name)
   end
 
   # Retrives recipe's tags
   # @param Contentful::Entry[recipe]
   # @return [Contentful::Entry[tag]]
-  def tags(recipe)
-    recipe.fields[:tags]
-  end
-
-  # Retrive tag name from a contentful tag object
-  # @param Contentful::Entry[recipe]
-  # @return String
-  def tag_name(tag)
-    tag.fields&.[](:name)&.capitalize
+  def tags
+    recipe.fields[:tags].map { |tag| tag.fields&.[](:name)&.capitalize }
   end
 
   # Retrives description of a recipe. Returns a default value
   # if there is no description
   # @param Contentful::Entry[recipe]
   # @return String
-  def description(recipe)
+  def description
     recipe.fields&.fetch(:description, 'No description')
   end
 end

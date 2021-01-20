@@ -1,6 +1,5 @@
 # Get recipes from Contentful
-class RecipeService < ContentService
-  def initialize
-    super(type: 'recipe')
-  end
+class RecipeService
+  extend ContentService
+  self.type = 'recipe'
 end

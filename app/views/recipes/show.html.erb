@@ -1,28 +1,28 @@
-<% if !@recipe %>
+<% if !@decorated_recipe %>
   <p class="danger"><%= "Something went wrong!" %></p>
 <% else %>
   <section>
     <article>
       <header class="heading">
-        <h1><%= title(@recipe) %></h1>
-        <% if chef_name(@recipe) %>
+        <h1><%= @decorated_recipe.title %></h1>
+        <% if @decorated_recipe.chef_name %>
           <div class="byline">
-            <address class="author">By <strong><%= chef_name(@recipe) %></strong></address> 
+            <address class="author">By <strong><%= @decorated_recipe.chef_name %></strong></address> 
           </div>
         <% end %>
         
-        <% if tags(@recipe) %>
+        <% if @decorated_recipe.tags %>
           <div class="tags">
-            <% tags(@recipe).map do |tag| %>
-              <span class="tag"> <%= tag_name(tag) %> </span>
+            <% @decorated_recipe.tags.map do |tag| %>
+              <span class="tag"> <%= tag %> </span>
             <% end %>
           </div>
         <% end %>
       </header>
       <div class="paper">
-        <%= image_tag photo_url(@recipe), alt: "recipe's photo", class: 'paper__image' %>
+        <%= image_tag @decorated_recipe.photo_url, alt: "recipe's photo", class: 'paper__image' %>
         <div class="paper__text">
-          <p><%= description(@recipe) %></p>
+          <p><%= @decorated_recipe.description %></p>
         </div>
       </div>
     </article>

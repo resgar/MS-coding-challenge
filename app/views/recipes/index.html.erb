@@ -1,11 +1,11 @@
-<% if !@recipes %>
+<% if !@decorated_recipes %>
   <p class="danger"><%= "Something went wrong!" %></p>
 <% else %>
   <header class="heading">
     <h1>Recipes</h1>
   </header>
   <section class="cards">
-    <% @recipes.each do |recipe| %>
+    <% @decorated_recipes.each do |recipe| %>
       <%= render partial: 'recipe', object: recipe %>
     <% end %>
   </section>
