@@ -16,6 +16,9 @@ CONTENTFUL_SPACE_ID: "Your Space ID"
 
 ## Running in production mode
 * `` RAILS_ENV=production rails assets:precompile ``
+* `` RAILS_ENV=production rake secret ``
+* Write your environment variable with the generated code:  
+  `` export SECRET_KEY_BASE=GENERATED_CODE ``
 * `` RAILS_ENV=production rails s ``
 
 ## Running tests
